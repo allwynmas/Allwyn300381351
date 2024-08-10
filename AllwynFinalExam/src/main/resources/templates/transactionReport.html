@@ -1,3 +1,8 @@
+
+<!--Name: Allwyn-->
+<!--Git: https://github.com/allwynmas/Allwyn300381351-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -50,6 +55,20 @@
             text-align: center;
         }
 
+        .add-sale-button {
+            float: right; /* Aligns the button to the right */
+            margin-top: 20px; /* Moves the button to the top right corner */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .add-sale-button:hover {
+            background-color: #45a049;
+        }
+
         .button.delete {
             background-color: #f44336;
         }
@@ -69,6 +88,10 @@
     </script>
 </head>
 <body>
+
+<!-- Add Sale Button -->
+<a href="/transactionform" class="add-sale-button">Add Sale</a>
+
 <h2>Transaction Report</h2>
 <table>
     <thead>

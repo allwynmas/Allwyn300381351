@@ -1,6 +1,9 @@
+/*
+Name: Allwyn
+Git: https://github.com/allwynmas/Allwyn300381351
+ */
+
 package com.example.allwynfinalexam.web;
-
-
 
 import com.example.allwynfinalexam.entities.SalesSummary;
 import com.example.allwynfinalexam.entities.TotalSales;
@@ -29,18 +32,6 @@ public class TransactionController {
         return "transactionForm";
     }
 
-
-//    @PostMapping("/saveTransaction")
-//    public String saveTransaction(@ModelAttribute("transaction") Transaction transaction) {
-//        // Check if this is a new transaction (no ID means it's new)
-//        if (transaction.getId() == null) {
-//            // Set the transaction date and code only for new transactions
-//            transaction.setTransactionDate(LocalDate.now());
-//            transaction.setTransactionCode(UUID.randomUUID().toString());
-//        }
-//        transactionRepository.save(transaction); // Save or update the transaction
-//        return "redirect:/transactions";
-//    }
 
     @PostMapping("/saveTransaction")
     public String saveTransaction(@ModelAttribute("transaction") Transaction transaction) {

@@ -1,3 +1,14 @@
+
+/*
+#
+#
+#
+Name: Allwyn
+Git: https://github.com/allwynmas/Allwyn300381351
+ */
+
+
+
 package com.example.allwynfinalexam.entities;
 
 public class TotalSales {
