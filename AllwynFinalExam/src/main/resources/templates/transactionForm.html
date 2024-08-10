@@ -1,46 +1,73 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Sales Transaction</title>-->
-<!--    <link rel="stylesheet" th:href="@{/Style.css}">-->
-<!--</head>-->
-<!--<body>-->
-<!--<h2>Sales Transaction Form</h2>-->
-<!--<form th:action="@{/saveTransaction}" th:object="${transaction}" method="post">-->
-<!--    <label for="salesmanName">Salesman Name:</label>-->
-<!--    <input type="text" id="salesmanName" th:field="*{salesmanName}" required><br><br>-->
-
-<!--    <label for="item">Item:</label>-->
-<!--    <select id="item" th:field="*{item}">-->
-<!--        <option value="Washing Machine">Washing Machine</option>-->
-<!--        <option value="Refrigerator">Refrigerator</option>-->
-<!--        <option value="Music System">Music System</option>-->
-<!--    </select><br><br>-->
-
-<!--    <button type="submit">Save</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sales Transaction</title>
+    <link rel="stylesheet" th:href="@{/Style.css}">
+    <style>
+        /* Button styles */
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button.view-report {
+            background-color: #007BFF; /* Different background color for the View Report button */
+        }
+
+        .button.view-report:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 <h2>Sales Transaction Form</h2>
-<form action="/saveTransaction" method="post">
-    <label for="salesmanName">Salesman Name:</label>
-    <input type="text" id="salesmanName" name="salesmanName" required><br><br>
+<form th:action="@{/saveTransaction}" th:object="${transaction}" method="post">
 
-    <label for="item">Item:</label>
-    <select id="item" name="item">
-        <option value="Washing Machine">Washing Machine</option>
-        <option value="Refrigerator">Refrigerator</option>
-        <option value="Music System">Music System</option>
-    </select><br><br>
+    <!-- Hidden input for the ID -->
+    <input type="hidden" th:field="*{id}">
 
-    <button type="submit">Save</button>
+    <table>
+        <tr>
+            <td><label for="salesmanName">Salesman Name:</label></td>
+            <td><input type="text" id="salesmanName" th:field="*{salesmanName}" required></td>
+        </tr>
+        <tr>
+            <td><label for="item">Item:</label></td>
+            <td>
+                <select id="item" th:field="*{item}">
+                    <option value="Washing Machine">Washing Machine</option>
+                    <option value="Refrigerator">Refrigerator</option>
+                    <option value="Music System">Music System</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="transactionDate">Transaction Date:</label></td>
+            <td><input type="date" id="transactionDate" th:field="*{transactionDate}" required></td>
+        </tr>
+        <tr>
+            <td><label for="amount">Amount:</label></td>
+            <td><input type="number" id="amount" th:field="*{amount}" step="0.01" required></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<!-- Separate form for the View Report button -->
+<form action="/transactions" method="get">
+    <button type="submit" class="button view-report">View Report</button>
 </form>
 </body>
 </html>
