@@ -2,6 +2,7 @@ package com.example.allwynfinalexam.web;
 
 
 
+import com.example.allwynfinalexam.entities.SalesSummary;
 import com.example.allwynfinalexam.model.Transaction;
 import com.example.allwynfinalexam.repositories.TransactionRepo;
 //import com.example.allwynfinalexam.repository.TransactionRepository;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -57,12 +60,45 @@ public class TransactionController {
     }
 
 
+//    @GetMapping("/transactions")
+//    public String viewTransactions(Model model) {
+//        List<Transaction> transactions = transactionRepository.findAll();
+//        model.addAttribute("transactions", transactions);
+//        return "transactionReport";
+//    }
+
     @GetMapping("/transactions")
     public String viewTransactions(Model model) {
         List<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
+
+        // Aggregating data for the summary report
+        Map<String, SalesSummary> summaryMap = new HashMap<>();
+
+        for (Transaction transaction : transactions) {
+            String salesmanName = transaction.getSalesmanName();
+            SalesSummary summary = summaryMap.getOrDefault(salesmanName, new SalesSummary(salesmanName));
+
+            switch (transaction.getItem()) {
+                case "Washing Machine":
+                    summary.setWashingMachines(summary.getWashingMachines() + 1);
+                    break;
+                case "Refrigerator":
+                    summary.setRefrigerators(summary.getRefrigerators() + 1);
+                    break;
+                case "Music System":
+                    summary.setMusicSystems(summary.getMusicSystems() + 1);
+                    break;
+            }
+
+            summaryMap.put(salesmanName, summary);
+        }
+
+        model.addAttribute("salesSummary", summaryMap.values());
+
         return "transactionReport";
     }
+
 
     @GetMapping("/editTransaction")
     public String editTransaction(@RequestParam Long id, Model model) {

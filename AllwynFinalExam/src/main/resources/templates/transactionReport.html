@@ -97,5 +97,27 @@
     </tr>
     </tbody>
 </table>
+
+<!-- Aggregated Sales Report -->
+<h2>Salesman Summary Report</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Salesman Name</th>
+        <th>Washing Machines Sold</th>
+        <th>Refrigerators Sold</th>
+        <th>Music Systems Sold</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="summary : ${salesSummary}">
+        <td th:text="${summary.salesmanName}"></td>
+        <td th:text="${summary.washingMachines}"></td>
+        <td th:text="${summary.refrigerators}"></td>
+        <td th:text="${summary.musicSystems}"></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
