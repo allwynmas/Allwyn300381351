@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Sales Transaction</title>-->
+<!--    <link rel="stylesheet" th:href="@{/Style.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Sales Transaction Form</h2>-->
+<!--<form th:action="@{/saveTransaction}" th:object="${transaction}" method="post">-->
+<!--    <label for="salesmanName">Salesman Name:</label>-->
+<!--    <input type="text" id="salesmanName" th:field="*{salesmanName}" required><br><br>-->
+
+<!--    <label for="item">Item:</label>-->
+<!--    <select id="item" th:field="*{item}">-->
+<!--        <option value="Washing Machine">Washing Machine</option>-->
+<!--        <option value="Refrigerator">Refrigerator</option>-->
+<!--        <option value="Music System">Music System</option>-->
+<!--    </select><br><br>-->
+
+<!--    <button type="submit">Save</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sales Transaction</title>
+</head>
+<body>
+<h2>Sales Transaction Form</h2>
+<form action="/saveTransaction" method="post">
+    <label for="salesmanName">Salesman Name:</label>
+    <input type="text" id="salesmanName" name="salesmanName" required><br><br>
+
+    <label for="item">Item:</label>
+    <select id="item" name="item">
+        <option value="Washing Machine">Washing Machine</option>
+        <option value="Refrigerator">Refrigerator</option>
+        <option value="Music System">Music System</option>
+    </select><br><br>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
