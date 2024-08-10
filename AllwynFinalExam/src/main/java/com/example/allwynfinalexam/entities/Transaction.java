@@ -1,4 +1,9 @@
-package com.example.allwynfinalexam.model;
+/*
+Name: Allwyn
+Git: https://github.com/allwynmas/Allwyn300381351
+ */
+
+package com.example.allwynfinalexam.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
